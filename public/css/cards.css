@@ -1,0 +1,83 @@
+/* Reset Bootstrap influence */
+
+
+.row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 2rem !important;
+  padding: 2rem 1rem !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: none !important;
+  background-color: #1e293b !;
+}
+
+/* Listing card link styling */
+.listing-link {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  text-decoration: none !important;
+  color: inherit !important;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07) !important;
+}
+
+.listing-link:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Image styling */
+.card-img-top {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Card body styling */
+.card-body {
+  padding: 1rem 1.25rem;
+  background-color: #fff !important;
+}
+
+/* Title */
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Price */
+.card-price {
+  font-size: 1rem;
+  color: #ef4444;
+}
+
+/* Responsive grid: optional enhancements */
+@media (min-width: 576px) {
+  .listing-link {
+    flex: 1 1 45%;
+  }
+}
+@media (min-width: 768px) {
+  .listing-link {
+    flex: 1 1 30%;
+  }
+}
+@media (min-width: 992px) {
+  .listing-link {
+    flex: 1 1 22%;
+  }
+}

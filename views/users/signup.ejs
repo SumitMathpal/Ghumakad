@@ -1,0 +1,31 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      
+        <h2 class="text-center text-primary mb-4">SignUp on Ghumakad</h2>
+        <form action="/signup" method="POST" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="username"> Username</label>
+            <input type="text" name="username" required placeholder="Enter your username" class="form-control">
+            <div class="invalid-feedback">Enter Your Name</div>
+          </div>
+          <div class="mb-3">
+            <label for="email"> Email</label>
+            <input type="email" name="email" required placeholder="Enter your email" class="form-control">
+            <div class="invalid-feedback">Enter your Email.</div>
+          </div>
+          <div class="mb-4">
+            <label for="password">Password</label>
+            <input type="password" name="password" required placeholder="Enter your password" class="form-control">
+            <div class="invalid-feedback">Enter Your password</div>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+          </div>
+        </form>
+      
+    </div>
+  </div>
+</div>

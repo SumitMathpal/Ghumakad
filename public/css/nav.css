@@ -1,0 +1,104 @@
+/* ===== Base Styles ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #f9fafb, #f3f4f6);
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* ===== Navbar Styling ===== */
+.navbar {
+  height: 4.5rem;
+  background-color: rgba(255, 255, 255, 0.9); /* improved readability */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ===== Icon Styling ===== */
+.fa-solid {
+  color: #5b5557;
+  font-size: 1.9rem;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+.fa-solid:hover {
+  transform: scale(1.15);
+  color: #007bff; /* Highlight on hover */
+}
+
+/* ===== Navigation Links ===== */
+.nav-link {
+  color: #1f2937 !important;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 1.25rem;
+  letter-spacing: 0.3px;
+  position: relative;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+  color: #374151 !important;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===== Menu Toggle Button ===== */
+.menu-toggle {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #1f2937;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.5rem;
+    height: auto;
+  }
+
+  .nav-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .nav-link {
+    margin: 0.6rem 0;
+    padding: 0.4rem 0;
+  }
+
+  .menu-toggle {
+    display: block;
+    align-self: flex-end;
+  }
+}

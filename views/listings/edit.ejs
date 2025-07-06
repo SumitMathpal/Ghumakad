@@ -1,0 +1,59 @@
+<% layout("/layouts/boilerplate.ejs"); %>
+
+
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Edit Your Listing</h2>
+
+    <form action="/listings/<%= listing._id %>?_method=PUT" method="POST" class="row g-3 needs-validation" novalidate   enctype="multipart/form-data">
+
+      <div class="col-md-6">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="listing[title]" value="<%= listing.title %>" required>
+        <div class="invalid-feedback">Please provide a title.</div>
+      </div>
+
+      <div class="col-md-12">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="listing[description]" rows="5" required><%= listing.description %></textarea>
+        <div class="invalid-feedback">Please enter a description.</div>
+      </div>
+
+
+ <div >
+  <label class="form-label fw-bold">Original Image</label>
+  <div class="border p-2 rounded bg-light ">
+    <img src="<%= originalUrl %>" alt="Original Listing Image" class="rounded" style="max-width: 300px; object-fit: cover;">
+  </div>
+</div>
+
+
+     <div class="col-md-6">
+      <label for="image" class="form-label">Upload image</label>
+      <input type="file" class="form-control" id="image" name="listing[image]">
+    </div>
+
+      <div class="col-md-6">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" id="price" name="listing[price]" value="<%= listing.price %>" required>
+        <div class="invalid-feedback">Please enter the price.</div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" class="form-control" id="country" name="listing[country]" value="<%= listing.country %>" required>
+        <div class="invalid-feedback">Please enter the country.</div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="listing[location]" value="<%= listing.location %>" required>
+        <div class="invalid-feedback">Please enter the location.</div>
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-success" type="submit">Update Listing</button>
+      </div>
+    </form>
+ 
+

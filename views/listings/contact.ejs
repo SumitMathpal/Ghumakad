@@ -1,0 +1,8 @@
+<% layout("/layouts/boilerplate.ejs"); %>
+<form action="/contact" method="POST" class="contact-form">
+  <h2>Contact Us</h2>
+  <input type="text" name="contact[name]" placeholder="Your Name" required>
+  <input type="email" name="contact[email]" placeholder="Your Email" required>
+  <textarea name="contact[message]" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>

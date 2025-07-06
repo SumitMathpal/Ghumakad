@@ -1,0 +1,115 @@
+<% layout("/layouts/boilerplate.ejs"); %>
+
+<body>
+  <div class="listing-container">
+    <div class="listing-card">
+      <!-- Listing Image -->
+      <h4><%= listing.title %></h4>
+      <% if (listing.image) { %>
+        <img src="<%= listing.image.url %>" alt="Listing Image" class="listing-image">
+      <% } %>
+
+      <!-- Tags (Optional) -->
+      <% if (listing.tags && listing.tags.length > 0) { %>
+        <div class="tags">
+          <% listing.tags.forEach(tag => { %>
+            <span class="tag"><%= tag %></span>
+          <% }); %>
+        </div>
+      <% } %>
+
+      <!-- Listing Details -->
+      <div class="listing-content">
+        <p style="font-style: italic;">Owned by - <%= listing.owner.username %></p>
+        <p><strong>Description:</strong> <%= listing.description %></p>
+        <p><strong>Price:</strong> ₹<%= listing.price.toLocaleString("en-IN") %></p>
+        <p><strong>Location:</strong> <%= listing.location %></p>
+        <p><strong>Country:</strong> <%= listing.country %></p>
+      </div>
+
+      <!-- Action Buttons -->
+      <% if (currentUser && currentUser._id.equals(listing.owner._id)) { %>
+        <div class="button-group">
+          <a class="btn edit-btn" href="/listings/<%= listing._id %>/edit">Edit</a>
+          <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" class="delete-form">
+            <button type="submit" class="btn delete-btn">Delete</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- Review Section -->
+    <div class="review-section">
+      <% if (currentUser) { %>
+        <% if (currentUser._id.toString() !== listing.owner._id.toString()) { %>
+          <h4 class="review-heading">Leave a Review</h4>
+          <form method="POST" action="/listings/<%= listing._id %>/reviews" class="review-form needs-validation" novalidate>
+            <div class="star-rating">
+              <label class="rating-label">Rating:</label>
+              <div class="stars">
+                <% for(let i = 5; i >= 1; i--) { %>
+  <input type="radio" id="star<%= i %>" name="review[rating]" value="<%= i %>" class="star-input">
+  <label for="star<%= i %>" title="<%= i %> stars">&#9733;</label>
+<% } %>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="comment">Comment:</label>
+              <textarea name="review[comment]" id="comment" rows="3" class="form-control" required></textarea>
+              <div class="invalid-feedback">Please add a comment for review</div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        <% } else { %>
+          <div class="alert-warning">
+            <strong>Sorry!</strong> You cannot leave a review on your own listing.
+          </div>
+        <% } %>
+      <% } %>
+
+      <!-- All Reviews -->
+<div class="card review-card">
+  <div class="card-body">
+    <h4 class="card-title text-center">All Reviews</h4>
+
+    <% if (listing.reviews.length === 0) { %>
+      <p class="text-muted text-center">No reviews yet.</p>
+    <% } else { %>
+      <div class="reviews-container">
+        <% for (let review of listing.reviews) { %>
+          <div class="review-box">
+            <div class="review-header">
+              <strong class="review-user">
+                <%= review.author?.username || "Anonymous" %>
+              </strong>
+              <span class="stars">
+                <%= "★".repeat(review.rating) %><%= "☆".repeat(5 - review.rating) %>
+              </span>
+            </div>
+
+            <p class="review-comment"><%= review.comment %></p>
+
+            <% if (
+              currentUser &&
+              review.author &&
+              review.author._id &&
+              review.author._id.toString() === currentUser._id.toString()
+            ) { %>
+              <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+              </form>
+            <% } %>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</body>
