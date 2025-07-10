@@ -44,7 +44,7 @@ main()
   });
 
 app.get("/", (req, res) => {
-  res.send("page not found");
+  res.redirect("/home");
 });
 // SESSION
 const store = MongoStore.create({
@@ -94,7 +94,10 @@ app.use("/listings/:id/reviews", reviewsRoute);
 app.use("/", userRoute);
 
 // INDEX ROUTE
+
+
 app.get("/home", wrapAsync(listingControllers.index));
+
 
 // CONTACT ROUTE
 app.get("/contact", (req, res) => {
