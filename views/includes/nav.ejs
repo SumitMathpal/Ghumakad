@@ -23,7 +23,7 @@
 
       <!-- Right side -->
       <ul class="navbar-nav ms-auto">
-        <% if (!currentUser) { %>
+        <% if (typeof currentUser === 'undefined' || !currentUser) { %>
           <li class="nav-item">
             <a class="nav-link" href="/signup">Sign Up</a>
           </li>

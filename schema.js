@@ -20,5 +20,5 @@ module.exports.reviewSchema = joi.object({
     rating:joi.string().required().min(1).max(5),
     comment:joi.string().required(),
 
-  }).required
+  }).required()
 });

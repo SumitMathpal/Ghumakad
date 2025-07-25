@@ -81,6 +81,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser()); // store user info into session.
 passport.deserializeUser(User.deserializeUser()); // release user info from session.
 
+// Place this middleware here, before all routes
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");

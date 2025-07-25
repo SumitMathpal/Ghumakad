@@ -102,3 +102,45 @@ body {
     align-self: flex-end;
   }
 }
+
+/* Mobile view: Navbar background color fix */
+@media (max-width: 767.98px) {
+  .navbar,
+  .navbar-collapse,
+  .navbar-nav {
+    background-color: #fff !important; /* Change to your desired color */
+    color: #000 !important;
+  }
+  .navbar .nav-link {
+    color: #000 !important;
+  }
+}
+
+/* Mobile view: Navbar collapse and toggler background fix */
+@media (max-width: 767.98px) {
+  .navbar,
+  .navbar-collapse,
+  .navbar-nav {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+  .navbar .nav-link {
+    color: #000 !important;
+  }
+  .navbar-toggler {
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+  }
+  .navbar-toggler-icon {
+    color: #000 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+}
+
+/* Remove red background from collapse menu */
+.navbar-collapse.show {
+  background-color: #fff !important;
+}
